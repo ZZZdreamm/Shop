@@ -1,0 +1,27 @@
+﻿@model Shop.Models.ItemModel
+@using Shop.Controllers;
+@{
+    var maxValue = @Model.ItemsOnStock;
+}
+@*<div class="itemAmount">
+    <div id="MinusLabel">
+        <a class="btn"><img src="~/img/minus.png"  class="SubstractNumber" ></a>
+    </div>
+   
+*@
+                     
+                     
+
+        <div class="Amount">
+            <input class="AmountOfNumbersInput" type="number" value="@Model.ItemsTaken" min="0" max="@maxValue">
+        </div>
+
+  @*  <div id="PlusLabel">
+        <a class="btn"><img src="~/img/plus.png" class="IncrementNumber"></a>
+    </div>
+*@
+    @*                 
+    <div class="itemsTaken">
+        <label class="ItemsTakenLabel">@HomeController.NumberOfItemsTaken from @maxValue</label>
+    </div>*@
+@*</div>*@

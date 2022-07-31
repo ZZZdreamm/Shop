@@ -1,0 +1,177 @@
+﻿@model IEnumerable<Shop.Models.ItemModel>
+@using Shop.Controllers;
+
+
+<style>
+    .CartItems{
+        height:700px;
+        width:500px;
+        overflow-y:scroll;
+    }
+    .mes{
+        font-size:large;
+        position:center;
+        left:450px;
+        top:450px;
+    }
+    .Title{
+        
+    }
+    .BillForm{
+        position:absolute;
+        left:700px;
+        top: 200px;
+        height:200px;
+        width:200px;
+    }
+    .Payment{
+        
+        
+        color:black;
+        padding: 2px 16px;
+    }
+    .card {
+        height:400px;
+        width:300px;
+         position:absolute;
+       left:800px;
+       bottom:150px;
+      background-color:cyan;
+      box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+      transition: 0.3s;
+    }
+    .FinalizeButton{
+        
+        width:100px;
+        height:50px;
+         background-color:grey;
+        border-block-color:grey;
+        border-block-end-color:grey;
+        border-right-color:grey;
+        border-left-color:grey;
+        color:black;
+    }
+    .ItemsTakenLabel{
+        position:relative;
+        bottom:55px;
+        left:95px;
+    }
+    #PlusLabel{
+        position:relative;
+        left:50px;
+        bottom:30px;
+        
+        width:30px;
+        height:30px;
+    }
+    #MinusLabel{
+        position:relative;
+         right:45px;
+        top:30px;
+        
+        width:30px;
+        height:30px;
+    }
+     .IncrementNumberInCart{
+        width:29px;
+        height:29px;
+    }
+    
+    .SubstractNumberInCart{
+         width:29px;
+        height:29px;
+    }
+    .itemAmount{
+        position:relative;
+       left:80%;
+       bottom:100px;
+    }
+ 
+
+</style>
+@{
+    
+}
+<h1 class="Title">Your Cart</h1>
+<div class="CartItems">
+    @{
+        if (Model.Count() > 0) 
+        {
+            
+                foreach (var item in Model) 
+                {
+                    int maxValue = item.ItemsOnStock;
+                    <div class="invisible @item.Id" id="@item.Id"></div>
+                    
+                                            <div>
+                                    @{if (item.Checked == true)
+                        {
+                                                                    <input type="checkbox" checked="checked" class ="itemCheckbox" id="@item.Id" value="@item.Id" name="Item @item.Id">
+                        }
+
+                                else
+                                {
+                                                                    <input type="checkbox" class ="itemCheckbox" id="@item.Id" value="@item.Id" name="Item @item.Id">
+                                }
+                                    }
+
+                                                        
+                                                      
+                                                         <div></div>                                                     
+                                                        <div>
+                                                                <img src="@item.Image">
+                                                                <span>          </span>
+                                                        </div>
+                                                       <div>
+                                                            @Html.DisplayFor(modelItem => item.Name)
+                                                            <span>          </span>
+                                                        </div>
+                                                            @Html.DisplayFor(modelItem => item.Price)
+                                                        
+                                                    
+
+                                                     <div class="itemAmount">
+                                                        <div id="MinusLabel">
+                                                            <button><img src="~/img/minus.png"  class="SubstractNumberInCart" id="@item.Id" ></button>
+                                                        </div>
+                                  
+                                 
+                                 
+
+                                                            <div class="Amount @item.Id" id="@item.Id">
+                                                                <input class="AmountOfNumbersInput" id="AmountOfNumbersInputId" type="number" value="@item.ItemsTaken" min="0" max="@maxValue">
+                                                            </div>
+
+                                                        <div id="PlusLabel">
+                                                            <button><img src="~/img/plus.png" class="IncrementNumberInCart" id="@item.Id"></button>
+                                                        </div>
+
+                                 
+                                                        <div class="itemsTaken @item.Id" id="@item.Id">
+                                                            <label class="ItemsTakenLabel">@item.ItemsTaken from @maxValue</label>
+                                                        </div>
+                                                    </div>
+                                </div>
+                }   
+                 
+           
+        }
+        else
+        {
+                                                                                                                    <div class="mes">Your Cart is empty</div>
+        }
+
+        
+     }
+            
+</div>
+
+<div class ="card" id="Bill">
+    <h2 class="Payment">@HomeController.costs $</h2>
+    
+        <a class="FinalizeButton" asp-area="" asp-controller="Home" asp-action="FinalizeShopping">Go To Payment</a>
+
+                  
+   @* <button class="FinalizeButton" type="submit" asp-controller="Home" asp-action="FinalizeShopping">Go To Payment</button>*@
+</div>
+

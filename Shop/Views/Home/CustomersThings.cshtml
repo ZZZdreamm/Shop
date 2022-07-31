@@ -1,0 +1,70 @@
+﻿@model Shop.Models.CustomerModel
+@using Shop.Controllers;
+
+<style>
+	.card1{
+        height:500px;
+        width:400px;
+         
+      background-color:white;
+      color:black;
+      box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+      transition: 0.3s;
+    }
+    .card2{
+        height:500px;
+        width:400px;
+         position:absolute;
+         bottom:150px;
+         left: 600px;
+
+      background-color:orange;
+      color:black;
+      box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+      transition: 0.3s;
+    }
+    .cardInside{
+        left:200px;
+        bottom:350px;
+        position:absolute;
+    }
+    
+</style>
+
+
+
+<div class="card1">
+    <div class="card1Inside">
+        Do You Have Account? Log In
+        <div class="row">
+            <div class="col-md-4">
+                <form>
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="EmailAdress" class="control-label"></label>
+                        <input asp-for="EmailAdress" class="form-control" id="Email"/>
+                        <span asp-validation-for="EmailAdress" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Password" class="control-label"></label>
+                        <input asp-for="Password" class="form-control" id="Password" />
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div>
+                     <div class="form-group">
+                        <input type="submit" value="Create" class="btn btn-primary sub" asp-controller="Home" asp-action="FinalizeShopping" />
+                     </div>
+           
+                </form>
+            </div>
+        </div>
+
+       
+    </div>
+</div>
+
+
+
+
+<div class="card2">
+    <a class="cardInside" asp-area="" asp-controller="Home" asp-action="BuyWithoutAccount">Do you want to continue without account?</a>
+</div>

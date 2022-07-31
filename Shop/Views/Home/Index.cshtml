@@ -1,0 +1,36 @@
+﻿<style>
+	.CategoryForm{
+		border:solid black;
+		overflow-y:scroll;
+		width:200px;
+		height:600px;
+	}
+	.CategoryType{	
+		background-color:darkorange;
+
+	}
+</style>
+
+<div class="CategoryForm">
+	<div>
+	<a class="btn CategoryType">Mitsubishi</a>
+	</div>
+	<br />
+	<div>
+	<a class="btn CategoryType" asp-area="" asp-controller="Home" asp-action="SearchForItemByCategory" asp-route-id="Chevrolet">Chevrolet</a>
+	</div>
+	<br />
+	<div>
+	<a class="btn CategoryType" asp-area="" asp-controller="Home" asp-action="SearchForItemByCategory" asp-route-id="Toyota">Toyota</a>
+	</div>
+	<br />
+	<div>
+	<a class="btn CategoryType" asp-area="" asp-controller="Home" asp-action="SearchForItemByCategory" asp-route-id="Ford">Ford</a>
+	</div>
+	<br />
+	<div>
+	<a class="btn CategoryType" asp-area="" asp-controller="Home" asp-action="SearchForItemByCategory" asp-route-id="Audi">Audi</a>
+	</div>
+    
+</div>
+<div class="JD"></div>

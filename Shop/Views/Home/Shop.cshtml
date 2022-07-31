@@ -1,0 +1,97 @@
+﻿@model IEnumerable<Shop.Models.ItemModel>
+@using Shop.Controllers;
+
+<style>
+    .Img{
+        height:225px;
+        width:250px;
+    }
+    .itemDiv{
+        width:400px;
+        position:relative;
+        left:250px;
+       bottom:225px;
+        
+    }
+    .NameDiv{
+        font-size:30px;
+    }
+    .PriceDiv{
+        font-size:20px;
+    }
+    .Item{
+        height:230px;
+        width:665px;
+       border-bottom-style:solid;
+        border-top-style:solid;
+         border-right-style:solid;
+        border-color:black;
+    }
+    .ItemTextDiv{
+        position:relative;
+        left:20px
+    }
+
+</style>
+@{
+    ViewData["Title"] = "Shop";
+  
+}
+
+<h1>Items in Shop</h1>
+
+
+
+@for (int i = 0; i < Model.Count(); i++)
+{
+            
+     int val = Model.ElementAt(i).Id - 1;
+            
+    <div class="Item">
+        <div class="ImageDiv">
+                    <img class="Img" src="@Model.ElementAt(i).Image">
+        </div>
+        <div class="itemDiv">
+            <div class="ItemTextDiv">
+                <div class="NameDiv">
+                     @Html.DisplayFor(modelItem => Model.ElementAt(i).Name)
+                 </div>
+                <div class="DescriptionDiv">
+                    @Html.DisplayFor(modelItem => Model.ElementAt(i).Description)
+                 </div>
+                <div class="PriceDiv">
+                    Price: @Html.DisplayFor(modelItem => Model.ElementAt(i).Price) $
+                </div>
+                 <div class="ItemsOnStockDiv">
+                     Items On Stock: @Html.DisplayFor(modelItem => Model.ElementAt(i).ItemsOnStock)
+                 </div>
+           
+            @if(Model.ElementAt(i).Available == true)
+            {
+                
+                      <button class="btn btn-primary ToCartButton" type="submit" value="@Model.ElementAt(i).Id">Add to Cart</button>
+                      <a class="btn btn-primary showItem" asp-area="" asp-controller="Home" asp-action="ShowItemView" asp-route-id="@val">Show More Details</a>
+                    
+                
+
+                
+            }
+            else
+            {
+                
+                    <button class="OutOfStockButton" id=""> 
+                        <img class="OutOfStockButtonImage" src="">
+                    </button>
+                 
+            }
+             </div>
+           
+     </div>
+
+   </div>
+    
+           
+                  
+}
+
+    

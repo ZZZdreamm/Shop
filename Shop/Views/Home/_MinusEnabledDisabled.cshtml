@@ -1,0 +1,23 @@
+﻿@using Shop.Controllers;
+@model Shop.Models.ItemModel
+<style>
+    .SubstractNumber{
+        
+        width:29px;
+        height:29px;
+    }
+    .MinusDisabled{
+        
+         width:29px;
+        height:29px;
+    }
+</style>
+@if (HomeController.NumberOfItemsTaken > 0)
+    {
+            <button><img src="~/img/minus.png" class="SubstractNumber"></button>
+    }
+    else if(HomeController.NumberOfItemsTaken == 0)
+    {
+            <button disabled="disabled"><img src="~/img/minus.png" class="MinusDisabled"></button>
+                
+    }

@@ -1,0 +1,15 @@
+﻿@model Shop.Models.ItemModel
+@using Shop.Controllers;
+@{
+    var maxValue = @Model.ItemsOnStock;
+}
+<style>
+	.ItemsTakenLabel{
+        position:relative;
+        bottom:55px;
+        left:95px;
+    }
+</style>
+<div class="itemsTaken">
+        <label class="ItemsTakenLabel">@Model.ItemsTaken from @maxValue</label>
+    </div>

@@ -1,0 +1,23 @@
+﻿@using Shop.Controllers;
+@model Shop.Models.ItemModel
+<style>
+    .IncrementNumber{
+     
+        width:29px;
+        height:29px;
+    }
+    .PlusDisabled{
+        
+        width:29px;
+        height:29px;
+    }
+</style>
+ @if (HomeController.NumberOfItemsTaken < Model.ItemsOnStock)
+                        {
+                                <button><img src="~/img/plus.png" class="IncrementNumber"></button>
+                        }
+                        else if(HomeController.NumberOfItemsTaken == Model.ItemsOnStock)
+                        {
+                             <button disabled="disabled"><img src="~/img/plus.png" class="PlusDisabled"></button>
+                
+                        }
